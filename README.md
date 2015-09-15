@@ -26,4 +26,4 @@ Foodie is a food management application that allows users to keep track of what'
 * Active Record
 
 ## Database Design- ERDs ##
-![ERD Image](./app/assets/images/Foodie-erd.png) 
+![ERD Image](app/assets/images/Foodie-erd.png) 
