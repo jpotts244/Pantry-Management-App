@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  category_id: 
+  food_name: MyString
+  quantity: MyString
+  expiration: 2015-09-15
+
+two:
+  user_id: 
+  category_id: 
+  food_name: MyString
+  quantity: MyString
+  expiration: 2015-09-15
