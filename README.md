@@ -27,3 +27,7 @@ Foodie is a food management application that allows users to keep track of what'
 
 ## Database Design- ERDs ##
 ![ERD Image](app/assets/images/Foodie-ERD.png)
+
+## References ##
+* Ruby on Rails Tutorial by Michael Hartl
+https://www.railstutorial.org/book/log_in_log_out
