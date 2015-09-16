@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user_id
-			redirect_to @user
+			redirect_to '/login'
 		else
-			# where to send user
+			render 'new'
 		end
 	end
 
@@ -22,6 +22,8 @@ class UsersController < ApplicationController
 		if params[:id].to_i == current_user.id
 			@user = User.find(params[:id])
 			@foods = @user.foods
+			@category = Category.all
+			# @food_groups = @category.foods
 		else
 			redirect_to users_path
 		end
@@ -30,12 +32,12 @@ class UsersController < ApplicationController
 	end
 
 	# -------do I want this?-------
-	def update
-		@user = User.find(params[:id])
-	end
+	# def update
+	# 	@user = User.find(params[:id])
+	# end
 
-	def destroy
-	end
+	# def destroy
+	# end
 
 	private
 	def user_params

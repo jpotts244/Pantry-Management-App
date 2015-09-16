@@ -2,4 +2,8 @@
 <%= @user.name %>
 <% @foods.each do |food| %>
 	<%= food.food_name %>
+
 	<% end %>
+<% @category.each do |group| %>
+	<%= group.category_name %>
+<% end %>
