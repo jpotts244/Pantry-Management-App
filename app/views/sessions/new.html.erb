@@ -1,0 +1,19 @@
+<h1>Log In</h1>
+<%= form_for(:session, url: login_path) do |f|%>
+	Enter email
+	<!-- add label tag -->
+	<%= f.email_field :email %>
+	Enter password
+	<!-- add label tag -->
+	<%= f.password_field :password %>
+	<%= f.submit "Log In" %>
+<% end %>
+
+<!-- <h1>Sign In</h1>
+<form method="GET" action="/login_action">
+	<input type="text" name="username">
+	<input type="text" name="password">
+	<input type="submit" value="Log In">
+</form>
+
+<a href="/users/new">Sign Up</a> -->
