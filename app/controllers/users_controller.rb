@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 	
-	def index
-		@users = User.all
-	end
+	# def index
+	# 	@users = User.all
+	# end
 
 	def new
 		@user = User.new
@@ -18,18 +18,18 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def show
-		if params[:id].to_i == current_user.id
-			@user = User.find(params[:id])
-			@foods = @user.foods
-			@category = Category.all
-			# @food_groups = @category.foods
-		else
-			redirect_to users_path
-		end
+	# def show
+	# 	if params[:id].to_i == current_user.id
+	# 		@user = User.find(params[:id])
+	# 		@foods = @user.foods
+	# 		@category = Category.all
+	# 		# @food_groups = @category.foods
+	# 	else
+	# 		redirect_to users_path
+	# 	end
 		
 			
-	end
+	# end
 
 	# -------do I want this?-------
 	# def update

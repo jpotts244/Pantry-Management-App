@@ -2,6 +2,7 @@ class FoodsController < ApplicationController
 	def index
 		@user = User.find(params[:user_id])
 		@foods = @user.foods
+		@category = Category.all
 	end
 
 	def new
@@ -12,7 +13,7 @@ class FoodsController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@foods = Foods.create(food_params)
-		redirect_to user_path(@user) 
+		redirect_to user_foods_path(@user) 
 	end
 
 	def edit
@@ -23,7 +24,7 @@ class FoodsController < ApplicationController
 		@food = Food.find(params[:id])
 		@food.update(food_params)
 		# -------------change this redirect--------------------
-		redirect_to @food
+		redirect_to user_foods_path
 	end
 
 	def destroy
