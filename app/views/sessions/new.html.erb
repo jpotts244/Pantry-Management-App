@@ -1,14 +1,19 @@
-<h1>Log In</h1>
-<%= form_for(:session, url: login_path) do |f|%>
-	
-	<%= f.label :email %>
-	<%= f.email_field :email %><br>
+<div class="container">
+	<div class="row">
+		<h1>Log In</h1>
+		<div class="form-group">
+		<%= form_for(:session, url: login_path) do |f|%>
+			
+			<%= f.label :email %>
+			<%= f.email_field :email, :class => "form-control" %><br>
 
-	<%= f.label :password %>
-	<%= f.password_field :password %><br>
-	
-	<%= f.submit "Log In" %>
-	
-	<a href="/users/new">Create Account</a>
-<% end %>
+			<%= f.label :password %>
+			<%= f.password_field :password, :class => "form-control" %><br>
+		</div>
+			<%= f.submit "Log In", :class => "btn btn-default" %>
+			
+			<a href="/users/new">Create Account</a>
+		<% end %>
+	</div>
+</div>
 

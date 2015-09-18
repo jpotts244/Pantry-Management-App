@@ -1,12 +1,18 @@
-<%= form_for(@user) do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
+<div class="container">
+	<div class="row">
+		<div class="form-group">
+			<%= form_for(@user) do |f| %>
+			<%= f.label :name %>
+			<%= f.text_field :name, :class => "form-control" %>
 
-<%= f.label :email %>
-<%= f.email_field :email %>
+			<%= f.label :email %>
+			<%= f.email_field :email, :class => "form-control" %>
 
-<%= f.label :password %>
-<%= f.password_field :password %>
+			<%= f.label :password %>
+			<%= f.password_field :password, :class => "form-control" %>
+		</div>
+			<%= f.submit "Sign Up", :class => "btn btn-default" %>
+			<% end %>
 
-<%= f.submit "Sign Up" %>
-<% end %>
+	</div>
+</div>

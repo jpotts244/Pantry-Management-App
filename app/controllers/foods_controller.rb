@@ -30,8 +30,9 @@ class FoodsController < ApplicationController
 	def update
 		@food = Food.find(params[:id])
 		@food.update(food_params)
+		render :json => @food.to_json
 		# -------------change this redirect--------------------
-		redirect_to user_foods_path
+		# redirect_to user_foods_path
 	end
 
 	def destroy

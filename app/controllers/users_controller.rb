@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user_id
-			redirect_to '/login'
+			flash[:success] = "Welcome to Foodie!"
+			redirect_to user_foods_path(@user)
 		else
 			render 'new'
 		end
