@@ -37,7 +37,7 @@ class FoodsController < ApplicationController
 	def destroy
 		@food = Food.find(params[:id])
 		@food.destroy
-		redirect_to @food.user
+		render :json => :success
 	end
 
 	private

@@ -8,14 +8,20 @@
 	<p>Here are your current foods:</p>	
 	
 	<div class="my-foods">
+		<ul class="food-list">
 		<% @foods.each do |food| %>
-			<li><%= food.food_name %></li>
-			<p><%= food.quantity %></p>
-			<p><%= food.expiration %></p>
+			<li data-id="<%= food.id %>">
+
+				<h4><%= food.food_name %></h4>
+				<p><%= food.quantity %></p>
+				<p><%= food.expiration %></p>
+				
 			
-			<button id="edit-button">Edit Me</button>
-			<button id="delete-button">Delete Me</button>
+				<button class="edit-button">Edit Me</button>
+				<button class="delete-button">Delete Me</button>
+			</li>
 		<% end %>
+		</ul>
 
 	</div>
 	
@@ -31,6 +37,21 @@
 	<% end %>
 
 	<script type="text/javascript">
+
+		$(document).on("click", ".delete-button", function(){
+			var element = $(this);
+			console.log(element.parent().data("id"));
+			var foodId = element.parent().data("id");
+
+			$.ajax({
+				url: "/users/<%= @user.id %>/foods/" + foodId,
+				type: "DELETE",
+				success: function(e){
+					element.parent().remove();
+				}
+			})
+		});
+			
 		
 
 		var form = $("#new-food-form");
@@ -40,26 +61,12 @@
 				method: "POST",
 				data: form.serialize(),
 				success: function(data) {
-					console.log("fuck yeah");
-					alert(data);
+					console.log(data.food_name);
+					$(".food-list").append("<li data-id=" + data.id + "><h4>" + data.food_name + "</h4>" + "<p>" + data.quantity + "</p> <p>" + data.expiration + "</p><button class='edit-button'>Edit Me</button> <button class='delete-button'>Delete Me</button></li>")
 				}
 			});
 			e.preventDefault();
 		});
-
-		// var deleteButton = $("#delete-button");
-		$("#delete-button").on("click", function(e){
-			console.log("hey")
-			// $.ajax({
-			// 	url: "<%= user_foods_path(@user) %>",
-			// 	method: "DELETE",
-
-			// }).done(function(data){
-				
-			// 	$this.el.remove();
-			// })
-		});
-
 		
 	</script>
 
