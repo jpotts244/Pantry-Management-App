@@ -18,18 +18,18 @@ class UsersController < ApplicationController
 		end
 	end
 
-	# def show
-	# 	if params[:id].to_i == current_user.id
-	# 		@user = User.find(params[:id])
-	# 		@foods = @user.foods
-	# 		@category = Category.all
-	# 		# @food_groups = @category.foods
-	# 	else
-	# 		redirect_to users_path
-	# 	end
+	def show
+		if params[:id].to_i == current_user.id
+			@user = User.find(params[:id])
+	  		@tasks = @user.tasks
+	  		@messages = @user.messages
+			redirect_to user_foods_path(@user)
+		else
+			redirect_to '/login'
+		end
 		
 			
-	# end
+	end
 
 	# -------do I want this?-------
 	# def update

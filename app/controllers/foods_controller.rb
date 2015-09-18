@@ -1,8 +1,15 @@
 class FoodsController < ApplicationController
+
+	respond_to :html, :js
+	
 	def index
 		@user = User.find(params[:user_id])
 		@foods = @user.foods
 		@category = Category.all
+		@food = Food.new
+		respond_with(@foods)
+		
+
 	end
 
 	def new
@@ -12,8 +19,8 @@ class FoodsController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@foods = Foods.create(food_params)
-		redirect_to user_foods_path(@user) 
+		@food = Food.create(food_params)
+		render :json => @food.to_json
 	end
 
 	def edit
@@ -35,6 +42,10 @@ class FoodsController < ApplicationController
 
 	private
 	def food_params
-		params.permit(:category_id, :food_name, :quantity, :expiration)
+		params
+		.require(:food)
+		.permit(:category_id, :food_name, :quantity, :expiration)
+		.merge({user_id: current_user.id})
+
 	end
 end

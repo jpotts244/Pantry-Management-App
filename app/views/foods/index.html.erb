@@ -1,9 +1,73 @@
-<%= @user.email %>
-<%= @user.name %>
-<% @foods.each do |food| %>
-	<%= food.food_name %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Pantry</title>
+</head>
+<body>
+	<h1>Hey, <%= @user.name %> </h1>
+	<p>Here are your current foods:</p>	
+	
+	<div class="my-foods">
+		<% @foods.each do |food| %>
+			<li><%= food.food_name %></li>
+			<p><%= food.quantity %></p>
+			<p><%= food.expiration %></p>
+			
+			<button id="edit-button">Edit Me</button>
+			<button id="delete-button">Delete Me</button>
+		<% end %>
+
+	</div>
+	
+	<%= form_for [@user, @food], :html => { :id => "new-food-form" } do |f| %>
+		<%= f.label :food_name %>
+		<%= f.text_field :food_name %>
+		<%= f.label :quantity %>
+		<%= f.text_field :quantity %>
+		<%= f.label :expiration %>
+		<%= f.text_field :expiration %>
+		<%= f.submit "Add New Food!" %>
 
 	<% end %>
-<% @category.each do |group| %>
-	<%= group.category_name %>
-<% end %>
+
+	<script type="text/javascript">
+		
+
+		var form = $("#new-food-form");
+		form.submit(function(e){
+			$.ajax({
+				url: "<%= user_foods_path(@user) %>",
+				method: "POST",
+				data: form.serialize(),
+				success: function(data) {
+					console.log("fuck yeah");
+					alert(data);
+				}
+			});
+			e.preventDefault();
+		});
+
+		// var deleteButton = $("#delete-button");
+		$("#delete-button").on("click", function(e){
+			console.log("hey")
+			// $.ajax({
+			// 	url: "<%= user_foods_path(@user) %>",
+			// 	method: "DELETE",
+
+			// }).done(function(data){
+				
+			// 	$this.el.remove();
+			// })
+		});
+
+		
+	</script>
+
+
+	
+
+
+
+</body>
+</html>
+

@@ -14,6 +14,17 @@ Rails.application.routes.draw do
   end
  resources :categories
 
+ 
+#  resources :categories, only: [:index]
+#  resources :users, only: [:index]
+
+#   namespace :api do
+#     resources :users do
+#     resources :foods, except: [:new, :edit]
+#   end
+  
+# end
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
