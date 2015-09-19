@@ -1,6 +1,4 @@
 class FoodsController < ApplicationController
-
-	respond_to :html, :js
 	
 	def search
 		if params[:search]
@@ -14,7 +12,6 @@ class FoodsController < ApplicationController
 		@foods = @user.foods
 		@category = Category.all
 		@food = Food.new
-		respond_with(@foods)
 	end
 
 
@@ -24,9 +21,14 @@ class FoodsController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:user_id])
-		@food = Food.create(food_params)
-		render :json => @food.to_json
+		@food = Food.new(food_params)
+		respond_to do |format|
+			if @food.save
+				format.json { render json: @food.to_json }
+			else
+				format.json { render json: @food.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def show
@@ -43,9 +45,7 @@ class FoodsController < ApplicationController
 	def update
 		@food = Food.find(params[:id])
 		@food.update(food_params)
-		render :json => @food.to_json
-		# -------------change this redirect--------------------
-		# redirect_to user_foods_path
+		redirect_to user_foods_path
 	end
 
 	def destroy
