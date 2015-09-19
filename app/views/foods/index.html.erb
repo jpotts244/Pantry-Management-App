@@ -4,123 +4,123 @@
 	<title>Your Pantry</title>
 </head>
 <body>
-	<div class="container">
+	<!-- <div class="container"> -->
 		<div class="row">
-			<h1>Hey, <%= @user.name %> </h1>
-			<p>Here are your current foods:</p>	
-			
-			<div class="my-foods">
-				<ul class="food-list">
-				<% @foods.each do |food| %>
-					<li data-id="<%= food.id %>">
-
-						<h4><%= food.food_name %></h4>
-						<p><%= food.quantity %></p>
-						<p><%= food.expiration %></p>
-						
+			<div class="col-md-8">
+				<h1>Hey, <%= @user.name %> </h1>
+				<p>Here are your current foods:</p>	
 				
-					<!-- 	<%= form_for [@user, @food], :html => { :id => "edit-food-form" } do |f| %>
-						<%= f.label :food_name %>
-						<%= f.hidden_field :food_name %>
-						<%= f.label :quantity %>
-						<%= f.text_field :quantity %>
-						<%= f.label :expiration %>
-						<%= f.text_field :expiration %>
-						<%= f.select :category_id, [1,2,3,4] %>
-					<%= f.submit "update food" %>
-						<% end %> -->
-						<button class="edit-button btn btn-default">Edit Me</button>
-						<button class="delete-button btn btn-default">Delete Me</button>
-						<form class="edit-food-form" style="display:none;">
+				<div class="my-foods">
+					<ul class="food-list">
+					<% @foods.each do |food| %>
+						<li data-id="<%= food.id %>">
 
-							<input type="text" name="quantity" placeholder="<%=@food.quantity%>">
-							<input class="btn btn-default"type="submit" value="Noms">
-						</form>
-					</li>
-				<% end %>
-				</ul>
+							<h4><%= food.food_name %></h4>
+							<p><%= food.quantity %></p>
+							<p><%= food.expiration %></p>
+							
+					
+						<!-- 	<%= form_for [@user, @food], :html => { :id => "edit-food-form" } do |f| %>
+							<%= f.label :food_name %>
+							<%= f.hidden_field :food_name %>
+							<%= f.label :quantity %>
+							<%= f.text_field :quantity %>
+							<%= f.label :expiration %>
+							<%= f.text_field :expiration %>
+							<%= f.select :category_id, [1,2,3,4] %>
+						<%= f.submit "update food" %>
+							<% end %> -->
+							<button class="edit-button btn btn-default">Edit Me</button>
+							<button class="delete-button btn btn-default">Delete Me</button>
+							<form class="edit-food-form" style="display:none;">
+
+								<input type="text" name="quantity" placeholder="<%=@food.quantity%>">
+								<input class="btn btn-default"type="submit" value="Noms">
+							</form>
+						</li>
+					<% end %>
+					</ul>
 
 				</div>
-			
-				
-
-			<div class="form-group">
-			<%= form_for [@user, @food], :html => { :id => "new-food-form" } do |f| %>
-				<%= f.label :food_name %>
-				<%= f.text_field :food_name, :class => "form-control" %>
-				<%= f.label :category_id %>
-				<%= f.select :category_id, [1,2,3,4] %>
-				<%= f.label :quantity %>
-				<%= f.text_field :quantity, :class => "form-control" %>
-				<%= f.label :expiration %>
-				<%= f.date_field :expiration, :class => "form-control" %>
 			</div>
-				<%= f.submit "Add New Food!", :class => "btn btn-default" %>
-
-			<% end %>
-
 			
+				
+			<div class="col-md-8">
+				<div class="form-group">
+				<%= form_for [@user, @food], :html => { :id => "new-food-form" } do |f| %>
+					<%= f.label :food_name %>
+					<%= f.text_field :food_name, :class => "form-control" %>
+					<%= f.label :category_id %>
+					<%= f.select :category_id, [1,2,3,4] %>
+					<%= f.label :quantity %>
+					<%= f.text_field :quantity, :class => "form-control" %>
+					<%= f.label :expiration %>
+					<%= f.date_field :expiration, :class => "form-control" %>
+				</div>
+					<%= f.submit "Add New Food!", :class => "btn btn-default" %>
 
-			<script type="text/javascript">
-			$(document).on("click", ".delete-button", function(){
-					var element = $(this);
-					console.log(element.parent().data("id"));
-					var foodId = element.parent().data("id");
+				<% end %>
 
-					$.ajax({
-						url: "/users/<%= @user.id %>/foods/" + foodId,
-						type: "DELETE",
-						success: function(e){
-							element.parent().remove();
-						}
-					})
-				});
-					
-				var form = $("#new-food-form");
-				form.submit(function(e){
-					$.ajax({
-						url: "<%= user_foods_path(@user) %>",
-						method: "POST",
-						data: form.serialize(),
-						success: function(data) {
-							console.log(data.food_name);
-							$(".food-list").append("<li data-id=" + data.id + "><h4>" + data.food_name + "</h4>" + "<p>" + data.quantity + "</p> <p>" + data.expiration + "</p><button class='edit-button btn btn-default'>Edit Me</button> <button class='delete-button btn btn-default'>Delete Me</button></li>")
-						}
+				
+
+				<script type="text/javascript">
+				$(document).on("click", ".delete-button", function(){
+						var element = $(this);
+						console.log(element.parent().data("id"));
+						var foodId = element.parent().data("id");
+
+						$.ajax({
+							url: "/users/<%= @user.id %>/foods/" + foodId,
+							type: "DELETE",
+							success: function(e){
+								element.parent().remove();
+							}
+						})
 					});
-					e.preventDefault();
-				});
+						
+					var form = $("#new-food-form");
+					form.submit(function(e){
+						$.ajax({
+							url: "<%= user_foods_path(@user) %>",
+							method: "POST",
+							data: form.serialize(),
+							success: function(data) {
+								console.log(data.food_name);
+								$(".food-list").append("<li data-id=" + data.id + "><h4>" + data.food_name + "</h4>" + "<p>" + data.quantity + "</p> <p>" + data.expiration + "</p><button class='edit-button btn btn-default'>Edit Me</button> <button class='delete-button btn btn-default'>Delete Me</button></li>")
+							}
+						});
+						e.preventDefault();
+					});
 
-				// var editForm = $("#edit-food-form");
-				// var element = $(this);
-				// var editFoodId = element.parent().data("id");
-				// var foodQuantity = $("#food-quanitiy").val();
-				// var updatedFoodData = {quantity: foodQuantity}
+					// var editForm = $("#edit-food-form");
+					// var element = $(this);
+					// var editFoodId = element.parent().data("id");
+					// var foodQuantity = $("#food-quanitiy").val();
+					// var updatedFoodData = {quantity: foodQuantity}
 
-				// editForm.submit(function(e){
-				// 	$.ajax({
-				// 		url: "/users/<%= @user.id %>/foods" + food.id,
-				// 		method: "PUT",
-				// 		data: editForm.serialize(),
-				// 		success: function(data) {
-				// 			$(this).parent().append("<p>" + data.quantity + "</p>")
-				// 		}
-				// 	});
-				
-				// 	e.preventDefault();
-				// });
-				var editForm = $("#edit-food-form");
-				$(document).on("click", ".edit-button", function(){
-					$(editForm).show();
-				});
-				
+					// editForm.submit(function(e){
+					// 	$.ajax({
+					// 		url: "/users/<%= @user.id %>/foods" + food.id,
+					// 		method: "PUT",
+					// 		data: editForm.serialize(),
+					// 		success: function(data) {
+					// 			$(this).parent().append("<p>" + data.quantity + "</p>")
+					// 		}
+					// 	});
+					
+					// 	e.preventDefault();
+					// });
+					var editForm = $("#edit-food-form");
+					$(document).on("click", ".edit-button", function(){
+						$(editForm).show();
+					});
+					
 
-				
-			</script>
-
-
-	
+					
+				</script>
+			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 
 </body>
 </html>
