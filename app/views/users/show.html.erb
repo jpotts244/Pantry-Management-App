@@ -1,9 +1,5 @@
-<%= @user.email %>
+<h1>Heres your account info</h1>
 <%= @user.name %>
-<% @foods.each do |food| %>
-	<%= food.food_name %>
+<%= @user.email %>
+<%= link_to "Edit Account Information", edit_user_path(@user) %>
 
-	<% end %>
-<% @category.each do |group| %>
-	<%= group.category_name %>
-<% end %>

@@ -3,15 +3,15 @@
 		<div class="form-group">
 			<%= form_for(@user) do |f| %>
 			<%= f.label :name %>
-			<%= f.text_field :name, :class => "form-control" %>
+			<%= f.text_field :name, :placeholder => "Name", :class => "form-control" %>
 
 			<%= f.label :email %>
-			<%= f.email_field :email, :class => "form-control" %>
+			<%= f.email_field :email, :placeholder => "Email", :class => "form-control" %>
 
 			<%= f.label :password %>
-			<%= f.password_field :password, :class => "form-control" %>
+			<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %>
 		</div>
-			<%= f.submit "Sign Up", :class => "btn btn-default" %>
+			<%= f.submit "Submit", :class => "btn btn-default" %>
 			<% end %>
 
 	</div>

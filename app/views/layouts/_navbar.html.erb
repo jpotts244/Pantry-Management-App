@@ -11,12 +11,12 @@
 				<% end %>
 			</div>
 			<div class="pull-right">
+				
+				<% if logged_in? %>
 				<ul class="nav navbar-nav hidden-xs hidden-sm">
 					<li><a href="/users/<%=current_user.id%>/foods">My Pantry</a></li>
 					<li><a href="/users/<%=current_user.id%>"class="nav narbar-nav hidden-xs hidden-sm">My Account</a></li>
-
 				</ul>
-				<% if logged_in? %>
 					<%= link_to "Logout", logout_path, method: :delete, class: "navbar-brand" %>
 			
 				<% else %>

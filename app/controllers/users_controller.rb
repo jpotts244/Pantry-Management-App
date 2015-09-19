@@ -19,26 +19,29 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# --------------Show User Account Information ------------
 	def show
 		if params[:id].to_i == current_user.id
 			@user = User.find(params[:id])
-	  		@tasks = @user.tasks
-	  		@messages = @user.messages
-			redirect_to user_foods_path(@user)
+	  		
 		else
 			redirect_to '/login'
-		end
-		
+		end	
 			
 	end
 
-	# -------do I want this?-------
-	# def update
-	# 	@user = User.find(params[:id])
-	# end
+	def edit
+		@user = User.find(params[:id])
+	end
+	
+	def update
+		@user = User.find(params[:id])
+		@user.update(user_params)
+		redirect_to current_user
+	end
 
-	# def destroy
-	# end
+	def destroy
+	end
 
 	private
 	def user_params
