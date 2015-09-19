@@ -20,25 +20,13 @@
 							<p><%= food.expiration %></p>
 							
 					
-						<!-- 	<%= form_for [@user, @food], :html => { :id => "edit-food-form" } do |f| %>
-							<%= f.label :food_name %>
-							<%= f.hidden_field :food_name %>
-							<%= f.label :quantity %>
-							<%= f.text_field :quantity %>
-							<%= f.label :expiration %>
-							<%= f.text_field :expiration %>
-							<%= f.select :category_id, [1,2,3,4] %>
-						<%= f.submit "update food" %>
-							<% end %> -->
 							<button class="edit-button btn btn-default">Edit Me</button>
 							<button class="delete-button btn btn-default">Delete Me</button>
 							<form class="edit-food-form" style="display:none;">
 
-								<input type="text" name="quantity" placeholder="<%=@food.quantity%>">
-								<input class="btn btn-default"type="submit" value="Noms">
-							</form>
+								
 						</li>
-					<% end %>
+					<% end %> 
 					</ul>
 
 				</div>
@@ -92,24 +80,7 @@
 						e.preventDefault();
 					});
 
-					// var editForm = $("#edit-food-form");
-					// var element = $(this);
-					// var editFoodId = element.parent().data("id");
-					// var foodQuantity = $("#food-quanitiy").val();
-					// var updatedFoodData = {quantity: foodQuantity}
-
-					// editForm.submit(function(e){
-					// 	$.ajax({
-					// 		url: "/users/<%= @user.id %>/foods" + food.id,
-					// 		method: "PUT",
-					// 		data: editForm.serialize(),
-					// 		success: function(data) {
-					// 			$(this).parent().append("<p>" + data.quantity + "</p>")
-					// 		}
-					// 	});
 					
-					// 	e.preventDefault();
-					// });
 					var editForm = $("#edit-food-form");
 					$(document).on("click", ".edit-button", function(){
 						$(editForm).show();
@@ -120,7 +91,7 @@
 				</script>
 			</div>
 		</div>
-	<!-- </div> -->
+
 
 </body>
 </html>

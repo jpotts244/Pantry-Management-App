@@ -10,8 +10,13 @@ Rails.application.routes.draw do
  delete "/logout" => "sessions#destroy"
 
  resources :users do
-   resources :foods
+  resources :foods do
+    # get 'search' => 'foods#search'
+    collection do
+      get "search"
+    end
   end
+ end
  resources :categories
 
  

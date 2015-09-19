@@ -2,15 +2,21 @@ class FoodsController < ApplicationController
 
 	respond_to :html, :js
 	
+	def search
+		if params[:search]
+			@food = Food.search(params[:search])
+			render :show
+		end 
+	end
+
 	def index
 		@user = User.find(params[:user_id])
 		@foods = @user.foods
 		@category = Category.all
 		@food = Food.new
 		respond_with(@foods)
-		
-
 	end
+
 
 	def new
 		@user = User.find(params[:user_id])
@@ -21,6 +27,13 @@ class FoodsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@food = Food.create(food_params)
 		render :json => @food.to_json
+	end
+
+	def show
+		if params[:id].to_i == current_user.id
+			@user = User.find(params[:id])
+			@foods = @user.foods
+		end
 	end
 
 	def edit
