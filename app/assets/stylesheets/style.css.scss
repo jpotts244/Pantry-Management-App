@@ -6,7 +6,20 @@ body{
 	padding: 5% 2%;
 
 }
+
 .navbar-header{
 	float: none;
 
+}
+
+.badge {
+	display: inline;
+}
+.food-expired {
+	background-color: #E9967A;
+	opacity: 0.5;
+}
+
+.food-almost-expired {
+	background-color: blue;
 }

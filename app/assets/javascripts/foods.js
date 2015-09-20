@@ -1,4 +1,9 @@
-	
+
+
+$(document).ready(function(){
+	var expiredFoods = $(".food-expired").length
+	$(".badge").text(expiredFoods);
+})
 
 $(document).on("click", ".delete-button", function(){
 	var element = $(this);
@@ -14,7 +19,7 @@ $(document).on("click", ".delete-button", function(){
 	})
 });
 
-$(document).on ("submit", "#new-food-form", function(e){
+$(document).on("submit", "#new-food-form", function(e){
 	var userId = $('#foods-container').data("user-id");
 
 	$.ajax({
@@ -33,6 +38,8 @@ $(document).on("click", ".edit-button", function(){
 });
 
 
+
+
 $(document).on("submit", ".edit-food-form", function(e){
 	var userId = $('#foods-container').data("user-id");
 	var foodId = $(this).parent().data("id");
@@ -47,3 +54,6 @@ $(document).on("submit", ".edit-food-form", function(e){
 	});
 	e.preventDefault();
 })
+
+
+

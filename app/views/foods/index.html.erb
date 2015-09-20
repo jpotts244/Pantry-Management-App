@@ -5,8 +5,10 @@
 		
 		<div class="my-foods">
 			<ul class="food-list">
+			
 				<%# iterates through @foods, renders food partial for each food %>
 				<%= render :partial => "food", :collection => @foods %>
+
 			</ul>
 
 		</div>
@@ -29,4 +31,6 @@
 
 		<% end %>
 	</div>
+
+
 </div>
