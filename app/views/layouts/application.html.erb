@@ -11,9 +11,12 @@
 	<div class="container">
 		<div class="header">
 			<%= render "/layouts/navbar" %>
-			<%= render "search" if @search_bar %>
+
 		</div>
 		<div class="content">
+			<div class="col-md-4 pull-right">
+				<%= render "search" if @search_bar %>
+			</div>
 			<% flash.each do |message_type, message| %>
 		        <div class="alert alert-<%= message_type %>"><%= message %></div>
 		    <% end %>
