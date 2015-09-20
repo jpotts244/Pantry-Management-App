@@ -1,20 +1,24 @@
+	
+
 $(document).on("click", ".delete-button", function(){
 	var element = $(this);
 	var foodId = element.parent().data("id");
+	var userId = $('#foods-container').data("user-id");
 
 	$.ajax({
-		url: "/users/<%= @user.id %>/foods/" + foodId,
+		url: "/users/" + userId + "/foods/" + foodId,
 		type: "DELETE",
 		success: function(e){
 			element.parent().remove();
 		}
 	})
 });
-	
-var form = $("#new-food-form");
-form.submit(function(e){
+
+$(document).on ("submit", "#new-food-form", function(e){
+	var userId = $('#foods-container').data("user-id");
+
 	$.ajax({
-		url: "<%= user_foods_path(@user) %>",
+		url: "/users/" + userId + "/foods",
 		method: "POST",
 		data: form.serialize(),
 		success: function(data) {
@@ -27,3 +31,19 @@ form.submit(function(e){
 $(document).on("click", ".edit-button", function(){
 	$(this).siblings(".edit-food-form").slideToggle();
 });
+
+
+$(document).on("submit", ".edit-food-form", function(e){
+	var userId = $('#foods-container').data("user-id");
+	var foodId = $(this).parent().data("id");
+	var element = $(this).parent();
+	$.ajax({
+		url: "/users/" + userId + "/foods/"+ "1",
+		type: "PUT",
+		data: $(this).serialize(),
+		success: function(data){
+			element.html(data);
+		}
+	});
+	e.preventDefault();
+})

@@ -9,7 +9,7 @@ class FoodsController < ApplicationController
 
 	def index
 		@user = User.find(params[:user_id])
-		@foods = @user.foods
+		@foods = @user.foods.order(:id)
 		@category = Category.all
 		@food = Food.new
 	end
@@ -42,8 +42,11 @@ class FoodsController < ApplicationController
 
 	def update
 		@food = Food.find(params[:id])
-		@food.update(food_params)
-		redirect_to user_foods_path
+		if @food.update(food_params)
+			render :partial => "food.html", locals: { food: @food }
+		else
+			render json: @food.errors, status: :unprocessable_entity
+		end
 	end
 
 	def destroy
