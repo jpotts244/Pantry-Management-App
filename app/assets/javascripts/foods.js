@@ -1,6 +1,5 @@
 $(document).on("click", ".delete-button", function(){
 	var element = $(this);
-	console.log(element.parent().data("id"));
 	var foodId = element.parent().data("id");
 
 	$.ajax({
@@ -19,7 +18,6 @@ form.submit(function(e){
 		method: "POST",
 		data: form.serialize(),
 		success: function(data) {
-			console.log("success baby!");
 			$(".food-list").append(data);
 		}
 	});
