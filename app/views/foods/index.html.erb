@@ -4,13 +4,21 @@
 		<p>Here are your current foods:</p>	
 		
 		<div class="my-foods">
-			<ul class="food-list">
-			
-				<%# iterates through @foods, renders food partial for each food %>
-				<%= render :partial => "food", :collection => @foods %>
-
-			</ul>
-
+			<table class="table food-list">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Quantity</th>
+						<th>Expiration</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<%# iterates through @foods, renders food partial for each food %>
+					<%= render :partial => "food", :collection => @foods %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	

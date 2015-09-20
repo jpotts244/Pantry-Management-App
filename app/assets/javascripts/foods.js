@@ -33,26 +33,24 @@ $(document).on("submit", "#new-food-form", function(e){
 });
 
 $(document).on("click", ".edit-button", function(){
-	$(this).siblings(".edit-food-form").slideToggle();
+	var parentTr = $(this).parents("tr");
+	var foodId = parentTr.data("id");
+	var formTr = parentTr.siblings("tr[data-id=" + foodId + "]");
+	formTr.fadeToggle();
 });
-
-
-
 
 $(document).on("submit", ".edit-food-form", function(e){
 	var userId = $('#foods-container').data("user-id");
-	var foodId = $(this).parent().data("id");
-	var element = $(this).parent();
+	var foodId = $(this).parents("tr").data("id");
+	var formTr = $(this).parents("tr");
+	var rowTr = formTr.siblings("tr[data-id=" + foodId + "]");
 	$.ajax({
-		url: "/users/" + userId + "/foods/"+ "1",
+		url: "/users/" + userId + "/foods/"+ foodId,
 		type: "PUT",
 		data: $(this).serialize(),
 		success: function(data){
-			element.fadeOut(function(){
-				element.html(data);
-				element.fadeIn();
-			})
-			
+			rowTr.remove();
+			formTr.replaceWith(data);
 		}
 	});
 	e.preventDefault();

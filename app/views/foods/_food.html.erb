@@ -1,21 +1,41 @@
-<li data-id="<%= food.id %>" class="<%= food_class(food.expiration) %>">
+<tr data-id="<%= food.id %>" class="<%= food_class(food.expiration) %>">
 	
-	<h4><%= food.food_name %></h4>
-	<p><%= food.quantity %></p>
-	<p><%= food.expiration %></p>
+	<td><%= food.food_name %></td>
+	<td><%= food.quantity %></td>
+	<td><%= food.expiration %></td>
 
-	<button class="edit-button btn btn-default">Edit Me</button>
-	<button class="delete-button btn btn-default">Delete Me</button>
+	<td><button class="edit-button btn btn-default btn-xs">Edit</button></td>
+	<td><button class="delete-button btn btn-danger btn-xs">Delete</button></td>
 
+</tr>
+<tr data-id="<%= food.id %>" style="display:none;">
+	<td colspan="5">
 	<!-- <div class="form-group"> -->
-		<%= form_for(food, url: user_foods_path, :html => { :class => "edit-food-form", :style => "display:none;" }) do |f|%>
-			<%= f.label :food_name %>
-			<%= f.text_field :food_name, :placeholder => "Food Name", :class => "form-control" %>
-			<%= f.label :quantity %>
-			<%= f.text_field :quantity, :placeholder => "Quantity", :class => "form-control" %>
-			<%= f.label :expiration %>
-			<%= f.date_field :expiration, :placeholder => "Expiration", :class => "form-control" %>
-			<%= f.submit "Submit", :class => "btn btn-default" %>
+		<%= form_for(food, url: user_foods_path, :html => { :class => "edit-food-form form-horizontal" }) do |f|%>
+			<div class="form-group form-group-sm">
+				<%= f.label :food_name, :class => "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.text_field :food_name, :placeholder => "Food Name", :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<%= f.label :quantity, :class => "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.text_field :quantity, :placeholder => "Quantity", :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<%= f.label :expiration, :class => "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.date_field :expiration, :placeholder => "Expiration", :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<div class="col-sm-offset-3 col-sm-9">
+					<%= f.submit "Submit", :class => "btn btn-success btn-sm" %>
+				</div>
+			</div>
 		<% end %>
 	<!-- </div> -->
-</li>
+	</td>
+</tr>
