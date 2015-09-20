@@ -1,7 +1,4 @@
-
-<% if food.expiration < Time.now %>
-
-	<li data-id="<%= food.id %>" class="food-expired">
+<li data-id="<%= food.id %>" class="<%= food_class(food.expiration) %>">
 	
 	<h4><%= food.food_name %></h4>
 	<p><%= food.quantity %></p>
@@ -9,24 +6,6 @@
 
 	<button class="edit-button btn btn-default">Edit Me</button>
 	<button class="delete-button btn btn-default">Delete Me</button>
-
-<% else %>
-
-
-	<li data-id="<%= food.id %>">
-	
-
-	<h4><%= food.food_name %></h4>
-	<p><%= food.quantity %></p>
-	<p><%= food.expiration %></p>
-
-	<button class="edit-button btn btn-default">Edit Me</button>
-	<button class="delete-button btn btn-default">Delete Me</button>
-
-
-	
-<% end %>
-
 
 	<!-- <div class="form-group"> -->
 		<%= form_for(food, url: user_foods_path, :html => { :class => "edit-food-form", :style => "display:none;" }) do |f|%>

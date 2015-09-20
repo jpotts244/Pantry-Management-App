@@ -1,7 +1,6 @@
 
-
 $(document).ready(function(){
-	var expiredFoods = $(".food-expired").length
+	var expiredFoods = $(".food-about-to-expire").length
 	$(".badge").text(expiredFoods);
 })
 
@@ -49,7 +48,11 @@ $(document).on("submit", ".edit-food-form", function(e){
 		type: "PUT",
 		data: $(this).serialize(),
 		success: function(data){
-			element.html(data);
+			element.fadeOut(function(){
+				element.html(data);
+				element.fadeIn();
+			})
+			
 		}
 	});
 	e.preventDefault();
