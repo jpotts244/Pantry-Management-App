@@ -22,12 +22,10 @@ class FoodsController < ApplicationController
 
 	def create
 		@food = Food.new(food_params)
-		respond_to do |format|
-			if @food.save
-				format.json { render json: @food.to_json }
-			else
-				format.json { render json: @food.errors, status: :unprocessable_entity }
-			end
+		if @food.save
+			render :partial => "food.html", locals: { food: @food }
+		else
+			render json: @food.errors, status: :unprocessable_entity
 		end
 	end
 
