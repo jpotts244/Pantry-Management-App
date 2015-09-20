@@ -1,7 +1,7 @@
 <div class="row" id="foods-container" data-user-id="<%= @user.id %>">
-	<div class="col-md-6">
-		<h1>Hey, <%= @user.name %> </h1>
-		<p>Here are your current foods:</p>	
+	<div class="col-md-9">
+		<h1>Your Pantry</h1>
+		<h4>Here are your current foods:</h4>	
 		
 		<div class="my-foods">
 			<table class="table food-list">
@@ -24,19 +24,27 @@
 	
 		
 	<div class="col-md-8">
+		
+		<%= form_for [@user, @food], :html => { :id => "new-food-form", :class =>  "form-horizontal" } do |f| %>
 		<div class="form-group">
-		<%= form_for [@user, @food], :html => { :id => "new-food-form" } do |f| %>
-			<%= f.label :food_name %>
-			<%= f.text_field :food_name, :class => "form-control" %>
-			<%= f.label :category_id %>
+			<%= f.label :category_id, :class => "control-label" %>
 			<%= f.select :category_id, [1,2,3,4] %>
-			<%= f.label :quantity %>
+		</div>
+		<div class="form-group">
+			<%= f.label :food_name, :class => "control-label"  %>
+			<%= f.text_field :food_name, :class => "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :quantity, :class => "control-label" %>
 			<%= f.text_field :quantity, :class => "form-control" %>
-			<%= f.label :expiration %>
+		</div>
+		<div class="form-group">
+			<%= f.label :expiration, :class => "control-label" %>
 			<%= f.date_field :expiration, :class => "form-control" %>
 		</div>
-			<%= f.submit "Add New Food!", :class => "btn btn-default" %>
-
+		<div class="form-group">
+			<%= f.submit "Add New Food", :class => "btn submit-button" %>
+		</div>
 		<% end %>
 	</div>
 
