@@ -5,15 +5,17 @@ $(document).ready(function(){
 })
 
 $(document).on("click", ".delete-button", function(){
-	var element = $(this);
-	var foodId = element.parent().data("id");
+	var foodId = $(this).parents("tr").data("id");
 	var userId = $('#foods-container').data("user-id");
+	var formTr = $(this).parents("tr");
+	var rowTr = formTr.siblings("tr[data-id=" + foodId + "]");
 
 	$.ajax({
 		url: "/users/" + userId + "/foods/" + foodId,
 		type: "DELETE",
 		success: function(e){
-			element.parent().remove();
+			formTr.remove();
+			rowTr.remove();
 		}
 	})
 });
