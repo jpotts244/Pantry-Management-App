@@ -26,8 +26,6 @@ form.submit(function(e){
 	e.preventDefault();
 });
 
-
-var editForm = $("#edit-food-form");
 $(document).on("click", ".edit-button", function(){
-	$(editForm).show();
+	$(this).siblings(".edit-food-form").slideToggle();
 });
