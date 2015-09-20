@@ -11,6 +11,7 @@
 	<div class="container">
 		<div class="header">
 			<%= render "/layouts/navbar" %>
+			<%= render "search" if @search_bar %>
 		</div>
 		<div class="content">
 			<% flash.each do |message_type, message| %>

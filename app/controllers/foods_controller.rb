@@ -1,13 +1,16 @@
 class FoodsController < ApplicationController
+
 	
 	def search
 		if params[:search]
 			@food = Food.search(params[:search])
+
 			render :show
 		end 
 	end
 
 	def index
+		@search_bar = true
 		@user = User.find(params[:user_id])
 		@foods = @user.foods.order(:id)
 		@category = Category.all
@@ -30,6 +33,7 @@ class FoodsController < ApplicationController
 	end
 
 	def show
+		@search_bar = true
 		if params[:id].to_i == current_user.id
 			@user = User.find(params[:id])
 			@foods = @user.foods

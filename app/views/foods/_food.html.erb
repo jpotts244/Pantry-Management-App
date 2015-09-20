@@ -5,14 +5,15 @@
 
 	<button class="edit-button btn btn-default">Edit Me</button>
 	<button class="delete-button btn btn-default">Delete Me</button>
-
-	<%= form_for(food, url: user_foods_path, :html => { :class => "edit-food-form", :style => "display:none;" }) do |f|%>
-		<%= f.label :food_name %>
-		<%= f.text_field :food_name, :placeholder => "Food Name" %>
-		<%= f.label :quantity %>
-		<%= f.text_field :quantity, :placeholder => "Quantity" %>
-		<%= f.label :expiration %>
-		<%= f.date_field :expiration, :placeholder => "Expiration" %>
-		<%= f.submit "Submit" %>
-	<% end %>
+	<!-- <div class="form-group"> -->
+		<%= form_for(food, url: user_foods_path, :html => { :class => "edit-food-form", :style => "display:none;" }) do |f|%>
+			<%= f.label :food_name %>
+			<%= f.text_field :food_name, :placeholder => "Food Name", :class => "form-control" %>
+			<%= f.label :quantity %>
+			<%= f.text_field :quantity, :placeholder => "Quantity", :class => "form-control" %>
+			<%= f.label :expiration %>
+			<%= f.date_field :expiration, :placeholder => "Expiration", :class => "form-control" %>
+			<%= f.submit "Submit", :class => "btn btn-default" %>
+		<% end %>
+	<!-- </div> -->
 </li>
