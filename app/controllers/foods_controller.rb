@@ -15,6 +15,7 @@ class FoodsController < ApplicationController
 		@foods = @user.foods.order(:id)
 		@category = Category.all
 		@food = Food.new
+
 	end
 
 

@@ -20,7 +20,7 @@ $(document).on ("submit", "#new-food-form", function(e){
 	$.ajax({
 		url: "/users/" + userId + "/foods",
 		method: "POST",
-		data: form.serialize(),
+		data: $(this).serialize(),
 		success: function(data) {
 			$(".food-list").append(data);
 		}
