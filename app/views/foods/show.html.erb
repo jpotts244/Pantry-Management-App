@@ -1,9 +1,16 @@
 <div class="row">
-	<% @food.each do |food| %>
-		<h3>Name of food: <%= food.food_name %></h3>
-		<h3>Quantity: <%= food.quantity %></h3>
-		<h3>Expiration Date: <%= food.expiration %></h3>
-		<h3>Purchased on: <%= food.created_at %></h3>
+	<div class="col-md-5">
+		<h1>Your Ingredients:</h1>
+		<% @food.each do |food| %>
+			<h3>Name of food:</h3> 
+			<p><%= food.food_name %></p>
+			<h3>Quantity:</h3> 
+			<p><%= food.quantity %></p>
+			<h3>Expiration Date:</h3>
+			<p><%= food.expiration %></p>
+			<h3>Purchased on:</h3> 
+			<p><%= food.created_at %></p>
 
-	<% end %>
+		<% end %>
+	</div>
 </div>
