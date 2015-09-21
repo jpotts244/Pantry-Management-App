@@ -20,6 +20,16 @@ body{
 	background-color: #008B8B;
 }
 
+.login-button {
+	position: relative;
+	right: 2%;
+}
+
+.btn-welcome:hover {
+	background-color: rgba(0,128,128,0.5);
+
+}
+
 #error-message {
 	ul {
 		color: red;
