@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 			log_in user
 			redirect_to user_foods_path(user)
 		else
-		  flash[:danger] = "Incorrect email or password"	
+		  flash.now[:danger] = "Incorrect email or password"	
 		  render 'new'
 		end
 	end
