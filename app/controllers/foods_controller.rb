@@ -3,10 +3,11 @@ class FoodsController < ApplicationController
 	
 	def search
 		if params[:search]
-			@food = Food.search(params[:search])
-
+			@user = User.find(params[:user_id])
+			@food = @user.foods.search(params[:search])
 			render :show
 		end 
+
 	end
 
 	def index
