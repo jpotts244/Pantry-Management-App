@@ -15,18 +15,7 @@ class FoodsController < ApplicationController
 		@foods = @user.foods.order(:id)
 		@category = Category.all
 		@food = Food.new
-		
 
-		# expired_foods = []
-		# @foods.each do |food|
-		# if food.expiration = Time.now - 2.days
-		# 	expired_foods.push(food)
-		# elsif food.expiration < Time.now
-		# 	flash[:danger] = food.food_name + " has expired" 
-	
-			
-		# end
-	# end
 
 	end
 
