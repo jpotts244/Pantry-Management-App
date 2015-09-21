@@ -1,17 +1,21 @@
 
 <div class="row">
+	<div class="col-md-4">
 
-	<%= form_for(@user) do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name, :placeholder => "Name", :class => "form-control" %><br>
+		<%= form_for(@user) do |f| %>
+		
+		<div class="form-group">
+			<%= f.label :name, :class => "control-label" %>
+			<%= f.text_field :name, :placeholder => "Name", :class => "form-control" %><br>
 
-	<%= f.label :email %>
-	<%= f.email_field :email, :placeholder => "Email", :class => "form-control" %><br>
+			<%= f.label :email, :class => "control-label" %>
+			<%= f.email_field :email, :placeholder => "Email", :class => "form-control" %><br>
 
-	<%= f.label :password %>
-	<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br>
+			<%= f.label :password, :class => "control-label" %>
+			<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br>
 
-	<%= f.submit "Submit", :class => "btn btn-default" %>
-	<% end %>
-
+			<%= f.submit "Submit", :class => "btn submit-button" %>
+		</div>
+		<% end %>
+	</div>
 </div>
