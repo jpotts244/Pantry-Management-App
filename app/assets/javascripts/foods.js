@@ -29,9 +29,14 @@ $(document).on("submit", "#new-food-form", function(e){
 		data: $(this).serialize(),
 		success: function(data) {
 			$(".food-list").append(data);
+			$("#food-name-input").val("");
+			$("#food-quantity-input").val("");
+			$("#food-expiration-input").val("");
 		}
+
 	});
 	e.preventDefault();
+
 });
 
 $(document).on("click", ".edit-button", function(){
