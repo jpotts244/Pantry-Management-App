@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 		if @user.save
 			session[:user_id] = @user_id
 			flash[:success] = "Welcome to Foodie!"
+			log_in @user
 			redirect_to user_foods_path(@user)
 		else
 			render 'new'
