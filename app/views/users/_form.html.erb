@@ -14,6 +14,16 @@
 			<%= f.label :password, :class => "control-label" %>
 			<%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br>
 
+			<% if @user.errors.any? %>
+				<div id="error-message">
+					<ul>
+						<% @user.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+						<% end %>
+
+					</ul>
+				</div>
+			<% end %>
 			<%= f.submit "Submit", :class => "btn submit-button" %>
 		</div>
 		<% end %>

@@ -19,6 +19,12 @@ body{
 	display: inline;
 	background-color: #008B8B;
 }
+
+#error-message {
+	ul {
+		color: red;
+	}
+}
 .submit-button {
 	background-color: #008B8B;
 	color: white;
