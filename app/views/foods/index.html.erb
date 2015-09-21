@@ -26,6 +26,7 @@
 	<div class="col-md-5">
 		<h2>Add a New Food</h2>
 		<%= form_for [@user, @food], :html => { :id => "new-food-form", :class =>  "form-horizontal" } do |f| %>
+		
 		<div class="form-group">
 			<%= f.label :category_id, :class => "control-label" %>
 			<%= f.select :category_id, [1,2,3,4] %>
