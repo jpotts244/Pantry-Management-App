@@ -27,10 +27,10 @@
 		<h2>Add a New Food</h2>
 		<%= form_for [@user, @food], :html => { :id => "new-food-form", :class =>  "form-horizontal" } do |f| %>
 		
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<%= f.label :category_id, :class => "control-label" %>
 			<%= f.select :category_id, [1,2,3,4] %>
-		</div>
+		</div> -->
 		<div class="form-group">
 			<%= f.label :food_name, :class => "control-label"  %>
 			<%= f.text_field :food_name, :class => "form-control" %>
