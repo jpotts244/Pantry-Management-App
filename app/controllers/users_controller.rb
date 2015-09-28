@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 			session[:user_id] = @user_id
 			flash[:success] = "Welcome to Foodie!"
 			log_in @user
+			UserMailer.send_welcome_email(@user).deliver_now
 			redirect_to user_foods_path(@user)
 		else
 			render 'new'
