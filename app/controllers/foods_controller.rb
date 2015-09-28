@@ -10,21 +10,20 @@ class FoodsController < ApplicationController
 
 	end
 
-
 	def index
 		@search_bar = true
 		@user = User.find(params[:user_id])
 		@foods = @user.foods.order(:id)
-		# //need to fix this
+		
 		send_warning = false
 		@foods.each do |food|
 			if food.expiration <= (Date.today + 2.days)
 				send_warning = true
-			else send_warning = false
+			# else  send_warning = false
 			end
 		end
 
-		if send_warning == true
+		if send_warning = true
 			UserMailer.send_expiration_warning_email(@user).deliver_now
 		end
 		@category = Category.all
