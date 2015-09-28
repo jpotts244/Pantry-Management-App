@@ -4,9 +4,13 @@
 </head>
 <body>
 	<h1>Hi, <%= @user.name %>!</h1>
-	<!-- <p>Looks like your <%= @foods %> is about to expire!</p>
-	<p>You have two days left until it's expiration date, you should use it up!</p> -->
-	<p>Looks like some food in your pantry is about to expire!</p>
+	<p>Looks like the following foods are about to expire:</p>
+	<ul>
+		<% @food.each do |food| %>
+			<li><%= food.food_name %></li>
+		<% end %>
+	</ul>
+	
 	<p>You have two days left until the expiration date, you should use it up!</p>
 
 	<h3>Happy Cooking,</h3>

@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-5">
+	<div class="col-md-5 recipe">
 		<h1>Your Ingredients:</h1>
 		<% @food.each do |food| %>
 			<h3>Name of food:</h3> 
@@ -12,5 +12,6 @@
 			<p><%= food.created_at %></p>
 
 		<% end %>
+
 	</div>
 </div>
