@@ -6,4 +6,11 @@ class UserMailer < ActionMailer::Base
 		mail( :to => @user.email, 
 			:subject => "Welcome to Foodie!" )
 	end
+
+	def send_expiration_warning_email(user)
+		@user = user
+		
+		mail( :to => @user.email,
+			:subject => "Your food is about to expire!" )
+	end
 end
