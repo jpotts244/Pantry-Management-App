@@ -31,3 +31,7 @@ Foodie is a food management application that allows users to keep track of what'
 ## References ##
 * Ruby on Rails Tutorial by Michael Hartl
 https://www.railstutorial.org/book/log_in_log_out
+
+## Features in the Works ##
+* Implementation of Food2Fork Recipe API to offer users recipe ideas for their current foods and pantry items.
+* Foodie Point System-make it fun! Award user points based on the amount of foods they use up before it's expiration date. 
